@@ -10,6 +10,7 @@ I'm typically running Ubuntu (currently 24.04) with the i3 window manager.
 * **nvim**: Neovim configuration.
 * **polybar**: Polybar status bar configuration.
 * **rofi**: Rofi dmenu replacement configuration.
+* **picom**: Picom compositor (I only use it for bg blur & transparency tbh).
 * **tmux**: Tmux terminal multiplexer configuration.
 * **walls**: Wallpapers that I use and like.
 * **zsh**: Zsh shell configuration.

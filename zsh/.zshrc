@@ -37,11 +37,13 @@ alias xc='xclip -selection clipboard'
 alias nv='nvim'
 alias nvi='nvim ~/.config/nvim'
 alias kit='nvim ~/.config/kitty'
+alias pb='nvim ~/.config/polybar'
 alias i3wm='nvim ~/.config/i3'
 alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
 alias ra='ranger'
+alias pc='nv ~/.config/picom.conf'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -61,3 +63,11 @@ PROMPT='%F{blue}%~%f $(git_prompt_info) %F{green}%#%f '
 
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share"
 
+# display message on load/reload
+echo "   _   _   _      _   _   _   _   _   _      _   _   _   _   _   _  
+  / \ / \ / \    / \ / \ / \ / \ / \ / \    / \ / \ / \ / \ / \ / \ 
+ ( z | s | h )  ( c | o | n | f | i | g )  ( l | o | a | d | e | d )
+  \_/ \_/ \_/    \_/ \_/ \_/ \_/ \_/ \_/    \_/ \_/ \_/ \_/ \_/ \_/ 
+"
+
+export PATH=$PATH:/home/prozod/.spicetify

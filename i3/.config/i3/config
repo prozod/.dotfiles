@@ -182,21 +182,24 @@ bindsym $mod+r mode "resize"
 #         tray_padding 6
 # }
 
+# xrandr to extend all connected displays right-of the precedent one
+exec_always chmod +x ~/.config/i3/auto-display.sh
+exec_always --no-startup-id ~/.config/i3/auto-display.sh
+
+
+# run picom compositor (old compton)
+exec_always --no-startup-id sh -c "sleep 2 && picom --config ~/.config/picom.conf"
+
 # polybar 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-for_window [class="Polybar"] floating enable
+exec_always --no-startup-id sh -c "sleep 3 && ~/.config/polybar/launch.sh"
 
 # Screenshot region PrntScr
 bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 exec --no-startup-id xset r rate 240 60
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 
-# xrandr to extend all connected displays right-of the precedent one
-exec_always chmod +x ~/.config/i3/auto-display.sh
-exec_always --no-startup-id ~/.config/i3/auto-display.sh
-
 # wallpaper
-exec_always feh --bg-fill /home/prozod/walls/hollow-knight.png
+exec_always sh -c "sleep 1 && feh --bg-fill /home/prozod/walls/hollow-knight.png"
 
 # rofi-wifi
 bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
@@ -204,7 +207,7 @@ bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
 bindsym $mod+b exec --no-startup-id ~/.config/rofi/rofi_bluetooth_menu.sh
 
 # i3lock the screen
-bindsym $mod+Shift+x exec i3lock-fancy
+bindsym $mod+Shift+x exec i3lock
 
 # Define color variables (Catppuccin Mocha Purple Theme)
 set $bg            #1e1e2e
@@ -225,15 +228,16 @@ client.background       $bg
 
 # borders and gaps
 # smart_borders on
-smart_gaps off
-gaps inner 10
-gaps outer 4
+# smart_gaps on
+# gaps inner 8
+# gaps outer 5
+gaps inner 6
 
 # remove i3 borders
 default_border pixel 0
 default_floating_border pixel 0
 for_window [class="^.*"] border pixel 1
 
-
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
+
