@@ -16,13 +16,6 @@ vim.keymap.set("n", '#', '#zz', opts)
 vim.keymap.set("n", '%', '%zz', opts)
 vim.keymap.set("n", '<leader>cs', '<C-w>c', opts) -- close split window
 
--- Center after command mode search (e.g. :/search or :?search) -- this breaks my floaterm
--- vim.api.nvim_create_autocmd("CmdLineLeave", {
---   callback = function()
---     vim.api.nvim_feedkeys("zz", "n", false)
---   end
--- })
-
 -- Buffers
 vim.keymap.set("n", '<S-h>', ':bprev<CR>', opts)
 vim.keymap.set("n", '<S-l>', ':bnext<CR>', opts)

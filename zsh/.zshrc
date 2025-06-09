@@ -71,3 +71,4 @@ echo "   _   _   _      _   _   _   _   _   _      _   _   _   _   _   _
 "
 
 export PATH=$PATH:/home/prozod/.spicetify
+export PATH="$HOME/.local/share/nvim/mason/packages/codelldb/extension/adapter:$PATH"

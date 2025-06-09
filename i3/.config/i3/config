@@ -17,9 +17,9 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:MonaspiceNe Nerd Font, FontAwesome 11
+# font pango:MonaspiceNe Nerd Font, FontAwesome 11
 # font pango:JetBrainsMono Nerd Font, FontAwesome 11
-
+font pango:SFMono Nerd Font, FontAwesome 11
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -97,11 +97,11 @@ bindsym $mod+space focus mode_toggle
 set $ws1 " " 
 set $ws2 " "
 set $ws3 " "
-set $ws4 ""
-set $ws5 ""
-set $ws6 ""
-set $ws7 ""
-set $ws8 ""
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 " "
 set $ws10 " "
 
@@ -109,7 +109,7 @@ set $ws10 " "
 # bindsym $mod+1 workspace number $ws1 # if you wanna number them with "1: Browser", add number before $ws
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws4
+bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
@@ -186,58 +186,79 @@ bindsym $mod+r mode "resize"
 exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
-
-# run picom compositor (old compton)
-exec_always --no-startup-id sh -c "sleep 2 && picom --config ~/.config/picom.conf"
+# wallpaper
+exec_always sh -c "sleep 0.5 && feh --bg-fill /home/prozod/walls/faces.png"
 
 # polybar 
-exec_always --no-startup-id sh -c "sleep 3 && ~/.config/polybar/launch.sh"
+exec_always --no-startup-id sh -c "sleep 1.5 && ~/.config/polybar/launch.sh"
 
 # Screenshot region PrntScr
 bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 exec --no-startup-id xset r rate 240 60
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 
-# wallpaper
-exec_always sh -c "sleep 1 && feh --bg-fill /home/prozod/walls/hollow-knight.png"
-
 # rofi-wifi
 bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
+
 # rofi-bluetooth
 bindsym $mod+b exec --no-startup-id ~/.config/rofi/rofi_bluetooth_menu.sh
 
 # i3lock the screen
 bindsym $mod+Shift+x exec i3lock
 
-# Define color variables (Catppuccin Mocha Purple Theme)
-set $bg            #1e1e2e
-set $fg            #cdd6f4
-set $accent        #cba6f7
-set $inactive_bg   #181825
-set $inactive_fg   #a6adc8
-set $urgent_bg     #f38ba8
-set $urgent_border #eba0ac
+# Minimalist color palette
+set $bg           #0e0e0c
+set $fg           #ffffff
+set $accent       #7fffd4
+set $alert        #ff4040
+set $separator    #727272
 
-# Window border colors
-client.focused          #1e1e2e $bg $accent $urgent_bg $accent
-client.focused_inactive $inactive_fg $inactive_bg $fg $inactive_bg $inactive_bg
-client.unfocused        #1e1e2e $inactive_bg $inactive_fg $inactive_bg $inactive_bg
-client.urgent           $urgent_bg $urgent_bg $bg $urgent_border $urgent_bg
-client.placeholder      $bg $bg $fg $bg $bg
+# Optional monochrome shades
+set $mono0        #1a1a1a
+set $mono1        #2e2e2e
+set $mono2        #444444
+set $mono3        #999999
+
+# Optional warning yellow
+set $warning      #ffd700
+
+# Classy minimalist borders
+client.focused          $mono3     $bg  $fg     $mono3        $mono3
+client.focused_inactive $mono1     $bg  $mono3  $mono1     $mono1
+client.unfocused        $mono0     $bg  $separator $mono0  $mono0
+client.urgent           $alert     $bg  $fg     $alert     $alert
+client.placeholder      $bg        $bg  $fg     $bg        $bg
 client.background       $bg
 
 # borders and gaps
-# smart_borders on
-# smart_gaps on
-# gaps inner 8
-# gaps outer 5
-gaps inner 6
+smart_borders on
+smart_gaps on
+gaps inner 8
+gaps outer 5
 
 # remove i3 borders
 default_border pixel 0
 default_floating_border pixel 0
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
 
+# ---------------------  GTK THEMEING --------------------------------
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+
+# Set GTK theme
+exec --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple-dark'
+exec --no-startup-id bash -c 'sleep 1 && nautilus --quit && GTK_THEME=Yaru-purple-dark nautilus &'
+
+# Set icon theme
+exec --no-startup-id gsettings set org.gnome.desktop.interface icon-theme 'Yaru-purple'
+
+# Optional: Set dark preference for libadwaita apps like Nautilus
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+# Optional: Set font again, for completeness
+exec --no-startup-id gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font 11'
+exec --no-startup-id gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font Mono 11'
+
+# ------------------  END OF GTK THEMEING --------------------------

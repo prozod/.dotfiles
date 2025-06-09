@@ -21,10 +21,21 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({})
+      require("nvim-surround").setup({
+        keymaps = {
+          insert = "<C-g>s",
+          insert_line = "<C-g>S",
+          normal = "as",           -- replaces `ys` (asiw - add surround in words + symbol, ex: asiw")
+          normal_cur = "ass",      -- replaces `yss` (ass - add surrounding sentence + symbol, ex: ass")
+          normal_line = "aS",      -- replaces `yS`
+          normal_cur_line = "aSS", -- replaces `ySS`
+          visual = "S",
+          delete = "ds",
+          change = "cs",
+        },
+      })
     end
   },
-  { "folke/neodev.nvim",     config = function() require('neodev').setup() end },
   {
     "numToStr/Comment.nvim",
     opts = {},

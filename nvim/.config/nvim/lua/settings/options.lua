@@ -44,7 +44,7 @@ set.splitright = true
 -- set.cursorcolumn = true
 -- set.cursorline = true
 set.signcolumn = "yes"
--- set.colorcolumn = "100"
+-- set.colorcolumn = "120"
 set.cmdheight = 0
 vim.opt.scroll = 14
 vim.opt.laststatus = 3
@@ -59,7 +59,7 @@ vim.opt.listchars = {
 vim.opt.list = true
 
 -- highlight on yank
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })')
+vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })')
 vim.cmd([[hi Visual guifg=#101010 guibg=#F6AC1F gui=none]])
 
 -- pythonprovider
@@ -70,11 +70,3 @@ set.guicursor =
 
 -- format on save
 vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-
--- Function to execute a command in the terminal
-vim.api.nvim_exec([[
-    augroup LatexCompile
-        autocmd!
-        autocmd BufWritePost *.tex silent !latexmk -pdf %:t
-    augroup END
-]], false)

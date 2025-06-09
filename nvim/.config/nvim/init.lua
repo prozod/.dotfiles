@@ -1,5 +1,6 @@
 require("settings.options")
-require("settings.lazy")
+require("core.lazy")
+require("core.lsp")
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",

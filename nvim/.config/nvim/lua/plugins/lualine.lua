@@ -40,67 +40,48 @@ local function modes()
   return mode_map[vim.api.nvim_get_mode().mode] or "__"
 end
 
-
 local colors = {
-  rosewater = "#f5e0dc",
-  flamingo  = "#f2cdcd",
-  pink      = "#f5c2e7",
-  mauve     = "#cba6f7",
-  red       = "#f38ba8",
-  maroon    = "#eba0ac",
-  peach     = "#fab387",
-  yellow    = "#f9e2af",
-  green     = "#a6e3a1",
-  teal      = "#94e2d5",
-  blue      = "#89b4fa",
-  sky       = "#89dceb",
-  sapphire  = "#74c7ec",
-  lavender  = "#b4befe",
-  text      = "#cdd6f4",
-  subtext1  = "#bac2de",
-  subtext0  = "#a6adc8",
-  overlay2  = "#9399b2",
-  overlay1  = "#7f849c",
-  overlay0  = "#6c7086",
-  surface2  = "#585b70",
-  surface1  = "#45475a",
-  surface0  = "#313244",
-  base      = "#1e1e2e",
-  mantle    = "#181825",
-  crust     = "#11111b",
+  bg     = "#161821",
+  fg     = "#d0d3d4",
+  yellow = "#f4d03f",
+  red    = "#e74c3c",
+  green  = "#2ecc71",
+  blue   = "#3498db",
+  gray   = "#545c7e",
+  purple = "#3498db",
+  orange = "#e67e22",
 }
 
--- catppuccin idk
 local custom_theme = {
   normal = {
-    a = { fg = colors.base, bg = colors.lavender, gui = "bold" },
-    b = { fg = colors.text, bg = "NONE" },
-    c = { fg = colors.subtext1, bg = "NONE" },
+    a = { fg = colors.bg, bg = colors.blue, gui = "bold" },
+    b = { fg = colors.fg, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
   insert = {
-    a = { fg = colors.base, bg = colors.blue, gui = "bold" },
-    b = { fg = colors.text, bg = "NONE" },
-    c = { fg = colors.subtext1, bg = "NONE" },
+    a = { fg = colors.bg, bg = colors.green, gui = "bold" },
+    b = { fg = colors.fg, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
   visual = {
-    b = { fg = colors.text, bg = "NONE" },
-    c = { fg = colors.subtext1, bg = "NONE" },
-    a = { fg = colors.base, bg = colors.mauve, gui = "bold" },
+    a = { fg = colors.bg, bg = colors.yellow, gui = "bold" },
+    b = { fg = colors.fg, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
   replace = {
-    b = { fg = colors.text, bg = "NONE" },
-    c = { fg = colors.subtext1, bg = "NONE" },
-    a = { fg = colors.base, bg = colors.red, gui = "bold" },
+    a = { fg = colors.bg, bg = colors.red, gui = "bold" },
+    b = { fg = colors.fg, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
   command = {
-    b = { fg = colors.text, bg = "NONE" },
-    c = { fg = colors.subtext1, bg = "NONE" },
-    a = { fg = colors.base, bg = colors.peach, gui = "bold" },
+    a = { fg = colors.bg, bg = colors.orange, gui = "bold" },
+    b = { fg = colors.fg, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
   inactive = {
-    a = { fg = colors.overlay0, bg = "NONE", gui = "bold" },
-    b = { fg = colors.overlay0, bg = "NONE" },
-    c = { fg = colors.overlay0, bg = "NONE" },
+    a = { fg = colors.gray, bg = 'NONE' },
+    b = { fg = colors.gray, bg = 'NONE' },
+    c = { fg = colors.gray, bg = 'NONE' },
   },
 }
 
@@ -158,7 +139,7 @@ return {
           },
           {
             "diff",
-            symbols = { added = " ", modified = " ", removed = " " },
+            symbols = { added = " ", modified = "󰝤 ", removed = " " },
             separator = { right = "", left = "" },
             diff_color = {
               added = { fg = colors.green },

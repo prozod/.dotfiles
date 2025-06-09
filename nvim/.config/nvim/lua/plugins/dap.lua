@@ -1,3 +1,4 @@
+local plenary = require("plenary.scandir")
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
@@ -22,8 +23,6 @@ return {
       },
       opts = {},
       config = function(_, opts)
-        -- setup dap config by VsCode launch.json file
-        -- require("dap.ext.vscode").load_launchjs()
         local dap = require("dap")
         local dapui = require("dapui")
         dapui.setup(opts)
@@ -44,24 +43,38 @@ return {
     require("nvim-dap-virtual-text").setup()
     dap.set_log_level("TRACE")
 
-    dap.adapters.lldb = {
-      type = 'executable',
-      command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
-      name = 'lldb'
+    ----------------------- ADAPTERS -------------------
+    dap.adapters.codelldb = {
+      type = "server",
+      port = "${port}",
+      executable = {
+        command = "codelldb",
+        args = { "--port", "${port}" },
+      },
     }
 
+    ----------------------- CONFIGURATIONS -------------------
     dap.configurations.cpp = {
       {
-        name = 'Launch',
-        type = 'lldb',
-        request = 'launch',
+        name = "C++",
+        type = "codelldb",
+        request = "launch",
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
+        cwd = vim.fn.getcwd(),
+        stopOnEntry = false, -- i banged my head 2hrs against my desk
+        -- because if stopOnEntry is true, it stops and displays assembly code in the debugger UI
         args = {},
-      },
+        runInTerminal = false,
+        setupCommands = {
+          {
+            text = 'make',
+            description = 'Compile',
+            ignoreFailures = false,
+          }
+        },
+      }
     }
 
     dap.configurations.c = dap.configurations.cpp
