@@ -17,7 +17,8 @@ sudo apt install -y \
     git \
     kitty \
     curl \
-    wget
+    wget \
+    brightnessctl
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

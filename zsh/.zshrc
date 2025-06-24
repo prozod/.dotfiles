@@ -64,11 +64,7 @@ PROMPT='%F{blue}%~%f $(git_prompt_info) %F{green}%#%f '
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share"
 
 # display message on load/reload
-echo "   _   _   _      _   _   _   _   _   _      _   _   _   _   _   _  
-  / \ / \ / \    / \ / \ / \ / \ / \ / \    / \ / \ / \ / \ / \ / \ 
- ( z | s | h )  ( c | o | n | f | i | g )  ( l | o | a | d | e | d )
-  \_/ \_/ \_/    \_/ \_/ \_/ \_/ \_/ \_/    \_/ \_/ \_/ \_/ \_/ \_/ 
-"
+echo ">>> .zshrc loaded <<<"
 
 export PATH=$PATH:/home/prozod/.spicetify
 export PATH="$HOME/.local/share/nvim/mason/packages/codelldb/extension/adapter:$PATH"

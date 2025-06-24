@@ -1,15 +1,14 @@
 return {
   {
-    "vague2k/vague.nvim",
+    "sainnhe/sonokai",
     lazy = false,
     priority = 1000,
     config = function()
-      require('vague').setup({
-        transparent = true
-      })
+      vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_transparent_background = 2
 
       -- setup must be called before loading
-      vim.cmd("colorscheme vague")
+      vim.cmd("colorscheme sonokai")
 
       vim.cmd([[ highlight TelescopeBorder guibg=none ]])
       vim.cmd([[ highlight TelescopeTitle guibg=none ]])
