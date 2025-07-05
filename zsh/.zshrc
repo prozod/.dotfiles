@@ -10,19 +10,16 @@ export TERM="xterm-256color"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="catppuccin"
-CATPPUCCIN_FLAVOR="mocha" # Required! Options: mocha, flappe, macchiato, latte
-CATPPUCCIN_SHOW_TIME=true  # Optional! If set to true, this will add the current time to the prompt.
+ZSH_THEME="edvardm"
 
 plugins=(
 	git
+  z
 	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-source ~/repos/zsh-z/zsh-z.plugin.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -58,13 +55,9 @@ export PATH="$HOME/.config/rofi/rofi_wifi_menu.sh:$PATH"
 # java swing antialiased text
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-# zsh prompt 
-PROMPT='%F{blue}%~%f $(git_prompt_info) %F{green}%#%f '
-
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share"
 
 # display message on load/reload
 echo ">>> .zshrc loaded <<<"
 
-export PATH=$PATH:/home/prozod/.spicetify
 export PATH="$HOME/.local/share/nvim/mason/packages/codelldb/extension/adapter:$PATH"

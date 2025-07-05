@@ -18,7 +18,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:MonaspiceNe Nerd Font, FontAwesome 11
-font pango:Noto Sans, FontAwesome 11
+font pango:Inter Nerd Font, FontAwesome 11
 # font pango:SFMono Nerd Font, FontAwesome 11
 
 # Start XDG autostart .desktop files using dex. See also
@@ -98,16 +98,27 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places. 
-set $ws1 " " 
-set $ws2 " "
-set $ws3 " "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 " "
-set $ws10 " "
+# set $ws1 " " 
+# set $ws2 " "
+# set $ws3 " "
+# set $ws4 "4: "
+# set $ws5 "5: "
+# set $ws6 "6: "
+# set $ws7 "7: "
+# set $ws8 "8: "
+# set $ws9 " "
+# set $ws10 " "
+
+set $ws1 "1" 
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 # bindsym $mod+1 workspace number $ws1 # if you wanna number them with "1: Browser", add number before $ws
@@ -191,7 +202,7 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.5 && feh --bg-fill /home/prozod/walls/faces.png"
+exec_always sh -c "sleep 0.5 && feh --bg-fill /home/prozod/walls/letterportrait.png"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 1.5 && ~/.config/polybar/launch.sh"
