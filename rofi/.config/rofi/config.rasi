@@ -1,4 +1,2 @@
-//@theme "/usr/share/rofi/themes/sidebar.rasi"
-//@theme "/usr/share/rofi/themes/arthur.rasi"
-//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
-@theme "/usr/share/rofi/themes/dmenu.rasi"
+// @theme "/usr/share/rofi/themes/material.rasi"
+@theme "/home/prozod/.config/rofi/theme.rasi"
